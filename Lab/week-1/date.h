@@ -1,14 +1,13 @@
 #ifndef DATE_H
-#define DATE_H
-
+#define DATE_H 
 typedef struct
-{
-    int date;
-    int month;
-    int year;
-}date;
+{ 
+    int dd, mm, yy; 
+}date_t;
 
-date date_set(date *d);
-void date_display(date d);
+date_t make_date(int dd, int mm, int yy);
+void read_date (FILE *fp, date_t *d);
+void print_date(date_t d);
+int compare_date(date_t d1, date_t d2);
 
 #endif
