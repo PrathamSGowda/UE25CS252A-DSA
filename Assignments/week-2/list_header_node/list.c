@@ -4,8 +4,8 @@
 
 void deinit_list(list_t *ptr_list)
 {
-	node_t* temp;
-	node_t* pres = ptr_list->head_->next_;
+	node_t *temp;
+	node_t *pres = ptr_list->head_->next_;
 
 	while(pres != NULL)
 	{
@@ -17,10 +17,10 @@ void deinit_list(list_t *ptr_list)
 	ptr_list->head_->next_ = NULL;
 }
 
-void delete(list_t* ptr_list, int key)
+void delete(list_t *ptr_list, int key)
 {
-	node_t* prev = ptr_list->head_; 
-	node_t* pres = ptr_list->head_->next_;
+	node_t *prev = ptr_list->head_; 
+	node_t *pres = ptr_list->head_->next_;
 
 	while(pres != NULL && pres->key_ < key)
 	{
@@ -35,6 +35,7 @@ void delete(list_t* ptr_list, int key)
 	}
 }
 
+// reused code from class
 void init_list(list_t *ptr_list)
 {
 	ptr_list->head_ = (node_t*)malloc(sizeof(node_t));
