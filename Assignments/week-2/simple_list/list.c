@@ -13,6 +13,7 @@ void deinit_list(list_t* ptr_list)
         free(temp);
     }
     ptr_list->head_ = NULL;
+    ptr_list->length_ = 0;
 }
 
 void delete(list_t *ptr_list, int key)
@@ -34,13 +35,34 @@ void delete(list_t *ptr_list, int key)
             prev->next_ = pres->next_;
 
         free(pres);
+        ptr_list->length_--;
 	}
+}
+
+int find_length1(list_t *ptr_list) // finding length using new function
+{
+    int count = 0;
+    node_t *pres = ptr_list->head_;
+
+    while(pres != NULL)
+    {
+        pres = pres->next_;
+        count++;
+    }
+
+    return count;
+}
+
+int find_length2(list_t *ptr_list) // findinf length by returning int field in struct
+{
+    return ptr_list->length_;
 }
 
 // reused code from class
 void init_list(list_t *ptr_list)
 {
 	ptr_list->head_ = NULL;
+    ptr_list->length_ = 0;
 }
 
 void disp(list_t *ptr_list)
@@ -88,5 +110,5 @@ void insert(list_t* ptr_list, int key)
 			temp->next_ = pres;
 		}
 	}
-	
+	ptr_list->length_++;
 }

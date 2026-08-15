@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "list.h" 
+#include "list.h"
 
 int main()
 {
@@ -18,10 +18,12 @@ int main()
 
     printf("List after insertion\n");
 	disp(&mylist);
+    printf("List length : %d\n", find_length1(&mylist));
 
     delete(&mylist,30);
     printf("List after deleting an element\n");
     disp(&mylist);
+    printf("List length : %d\n", find_length2(&mylist));
 
     deinit_list(&mylist);
     printf("List after deinitialization\n");

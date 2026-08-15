@@ -10,6 +10,7 @@ typedef struct node
 typedef struct list 
 {
 	node_t* head_;
+    int length_;
 }list_t;
 
 void init_list(list_t* ptr_list);
@@ -17,5 +18,7 @@ void deinit_list(list_t* ptr_list);
 void insert(list_t* ptr_list, int key);
 void delete(list_t* ptr_list, int key);
 void disp(list_t* ptr_list);
+int find_length1(list_t *ptr_list);
+int find_length2(list_t *ptr_list);
 
 #endif
