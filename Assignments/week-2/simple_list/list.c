@@ -53,10 +53,26 @@ int find_length1(list_t *ptr_list) // finding length using new function
     return count;
 }
 
-int find_length2(list_t *ptr_list) // findinf length by returning int field in struct
+int find_length2(list_t *ptr_list) // finding length by returning int field in struct
 {
     return ptr_list->length_;
 }
+
+void disp_recursive(node_t *node)
+{
+	if(node == NULL)
+		return;
+	
+	printf("%d ",node->key_);
+	disp_recursive(node->next_);
+}
+
+void disp2(list_t *ptr_list)
+{
+	disp_recursive(ptr_list->head_);
+	printf("\n");
+}
+
 
 // reused code from class
 void init_list(list_t *ptr_list)
@@ -65,7 +81,7 @@ void init_list(list_t *ptr_list)
     ptr_list->length_ = 0;
 }
 
-void disp(list_t *ptr_list)
+void disp1(list_t *ptr_list)
 {
 	node_t* pres = ptr_list->head_;
 	while(pres != NULL)

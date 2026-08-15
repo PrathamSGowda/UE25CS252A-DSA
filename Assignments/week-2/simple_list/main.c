@@ -9,7 +9,7 @@ int main()
 	list_t mylist;
 	init_list(&mylist);
     printf("List after initialization\n");
-    disp(&mylist);
+    disp1(&mylist);
 	
 	for(int i = 0; i < n; ++i)
 	{
@@ -17,15 +17,15 @@ int main()
 	}
 
     printf("List after insertion\n");
-	disp(&mylist);
+	disp2(&mylist);
     printf("List length : %d\n", find_length1(&mylist));
 
     delete(&mylist,30);
     printf("List after deleting an element\n");
-    disp(&mylist);
+    disp1(&mylist);
     printf("List length : %d\n", find_length2(&mylist));
 
     deinit_list(&mylist);
     printf("List after deinitialization\n");
-    disp(&mylist);
+    disp2(&mylist);
 }
