@@ -10,7 +10,7 @@ struct stack
 typedef struct stack stack_t;
 
 void init_stack(stack_t *ptr_stack);
-void deinit_stack();
+void deinit_stack(stack_t *ptr_stack);
 void push(stack_t *ptr_stack, char ch);
 char pop(stack_t *ptr_stack);
 char peek(stack_t *ptr_stack);
