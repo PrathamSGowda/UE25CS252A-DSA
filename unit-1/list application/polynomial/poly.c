@@ -23,6 +23,23 @@ void differentiate(poly_t *ptr_poly, poly_t* ptr_diff_poly)
 	}
 }
 
+float definite_integrate(poly_t *ptr_poly, poly_t* ptr_intg_poly, int upper_bound, int lower_bound)
+{
+	copy(ptr_poly,ptr_intg_poly);
+	node_t *pres = ptr_intg_poly->head_;
+	while(pres != NULL)
+	{
+		pres->term_.coeff_ = pres->term_.coeff_ / (pres->term_.expo_ + 1);
+		pres->term_.expo_ = pres->term_.expo_ + 1;
+		pres = pres->next_;
+	}
+
+	float u = eval(ptr_intg_poly,upper_bound);
+	float l = eval(ptr_intg_poly,lower_bound);
+
+	return u-l;
+}
+
 void copy(poly_t *ptr_poly1, poly_t *ptr_poly2)
 {
 	node_t *pres1 = ptr_poly1->head_;
@@ -46,9 +63,9 @@ void copy(poly_t *ptr_poly1, poly_t *ptr_poly2)
 	}
 }
 
-int eval(poly_t *ptr_poly, int x)
+float eval(poly_t *ptr_poly, int x)
 {
-	int sum = 0;
+	float sum = 0;
 	node_t* pres = ptr_poly->head_;
 	while(pres != NULL)
 	{

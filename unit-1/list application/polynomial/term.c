@@ -2,10 +2,10 @@
 #include <math.h>
 #include "term.h"
 
-int term_value(term_t* ptr_term, int x)
+float term_value(term_t* ptr_term, int x)
 {
-	int coeff = ptr_term->coeff_;
-	int expo = ptr_term->expo_;
+	float coeff = ptr_term->coeff_;
+	float expo = ptr_term->expo_;
 
 	return coeff * pow(x,expo);
 }
@@ -18,7 +18,7 @@ void set_term(term_t* ptr_term, int coeff, int expo)
 
 void disp_term(term_t* ptr_term)
 {
-	printf("+ %d x^%d  ", ptr_term->coeff_, ptr_term->expo_);
+	printf("+ %.2f x^%.2f  ", ptr_term->coeff_, ptr_term->expo_);
 }
 
 int compare_exponents(term_t* left, term_t* right)

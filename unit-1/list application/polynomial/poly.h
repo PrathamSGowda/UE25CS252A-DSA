@@ -19,8 +19,9 @@ typedef struct poly poly_t;
 void init_poly(poly_t* ptr_poly);
 void insert(poly_t* ptr_poly, int coeff, int expo);
 void disp(poly_t* ptr_list);
-int eval(poly_t *ptr_poly, int x);
+float eval(poly_t *ptr_poly, int x);
 void copy(poly_t *ptr_poly1, poly_t *ptr_poly2);
 void differentiate(poly_t *ptr_poly, poly_t* ptr_diff_poly);
+float definite_integrate(poly_t *ptr_poly, poly_t* ptr_intg_poly, int upper_bound, int lower_bound);
 
 #endif
