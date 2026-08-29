@@ -2,6 +2,120 @@
 #include <stdlib.h>
 #include "dll.h"
 
+node_t* create_node(int key)
+{
+	node_t* temp = (node_t*)malloc(sizeof(node_t));
+	if(temp == NULL)
+	{
+		perror("malloc failed\n");
+	}
+	else 
+	{
+		temp->key_ = key;
+	}
+	return temp;
+	
+}
+
+void add_after_key(dll_t *ptr_dlist, int key, int val)
+{
+	node_t *temp = create_node(val);
+	node_t *pres = ptr_dlist->head_;
+
+	int key_found = 0;
+
+	while(pres != NULL)
+	{
+		if(pres->key_ == key)
+		{
+			key_found = 1;
+			if(pres->next_ == NULL)
+			{
+				add_at_end(ptr_dlist, val);
+			}
+
+			else
+			{
+				temp->prev_ = pres;
+            	temp->next_ = pres->next_;
+
+            	pres->next_->prev_ = temp;
+            	pres->next_ = temp;
+			}
+		}
+		pres = pres->next_;
+
+	}
+
+	if(key_found == 0)
+		printf("key not found\n");
+}
+
+void add_before_key(dll_t *ptr_dlist, int key, int val)
+{
+	node_t *temp = create_node(val);
+	node_t *pres = ptr_dlist->head_;
+
+	int key_found = 0;
+
+	while(pres != NULL)
+	{
+		if(pres->key_ == key)
+		{
+			key_found = 1;
+			if(pres->prev_ == NULL)
+			{
+				add_in_begin(ptr_dlist, val);
+			}
+
+			else
+			{
+				temp->prev_ = pres;
+            	temp->next_ = pres->next_;
+
+            	pres->next_->prev_ = temp;
+            	pres->next_ = temp;
+			}
+		}
+		pres = pres->next_;
+
+	}
+	
+	if(key_found == 0)
+		printf("key not found\n");
+}
+
+void remove_node(dll_t *ptr_dlist, int key)
+{
+	node_t* pres = ptr_dlist->head_;
+	int key_found = 0;
+
+	while(pres != NULL)
+	{
+		if(pres->key_ == key)
+		{
+			key_found = 1;
+			if(pres->prev_ == NULL)
+			{
+				remove_in_begin(ptr_dlist);
+			}
+			else if(pres->next_ == NULL)
+			{
+				remove_at_end(ptr_dlist);
+			}
+			else
+			{
+				pres->next_->prev_ = pres->prev_;
+				pres->prev_->next_ = pres->next_;
+				free(pres);
+			}
+		}
+		pres = pres->next_;
+	}
+	if(key_found == 0)
+		printf("key not found\n");
+}
+
 void init(dll_t* ptr_dlist)
 {
 	ptr_dlist->head_ = ptr_dlist->tail_ = NULL;
@@ -30,20 +144,7 @@ void disp_backward(dll_t* ptr_dlist)
 	}
 	printf("\n");
 }
-node_t* create_node(int key)
-{
-	node_t* temp = (node_t*)malloc(sizeof(node_t));
-	if(temp == NULL)
-	{
-		perror("malloc failed\n");
-	}
-	else 
-	{
-		temp->key_ = key;
-	}
-	return temp;
-	
-}
+
 
 // 1. empty list 
 // 2. non-empty list

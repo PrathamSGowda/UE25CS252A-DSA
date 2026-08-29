@@ -14,6 +14,11 @@ struct dll
 	node_t* tail_;
 };
 typedef struct dll dll_t;
+
+void add_after_key(dll_t *ptr_dlist, int key, int val);
+void add_before_key(dll_t *ptr_dlist, int key, int val);
+void remove_node(dll_t *ptr_dlist, int key);
+
 void init(dll_t* ptr_dlist);
 void disp_forward(dll_t* ptr_dlist);
 void disp_backward(dll_t* ptr_dlist);
@@ -26,4 +31,4 @@ void remove_in_begin(dll_t* ptr_dlist);
 // remove at the end 
 void remove_at_end(dll_t* ptr_dlist);
 
-#endif 
+#endif
