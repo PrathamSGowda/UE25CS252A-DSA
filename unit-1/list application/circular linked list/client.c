@@ -14,4 +14,10 @@ int main()
 		add(&mylist, a[i]);
 		disp(&mylist);
 	}
+
+	int key;
+	printf("Enter key to be deleted : ");
+	scanf("%d",&key);
+	remove_node(&mylist,key);
+	disp(&mylist);
 }

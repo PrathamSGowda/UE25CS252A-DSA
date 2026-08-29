@@ -13,10 +13,9 @@ struct clist
 };
 typedef struct clist clist_t;
 
+void remove_node(clist_t  *ptr_clist, int key);
+
 void init_clist(clist_t *ptr_clist);
 void add(clist_t *ptr_clist, int val);
 void disp(clist_t* ptr_clist);
-// to do
-// void deinit_clist ...
-// void delete ...
 #endif 
