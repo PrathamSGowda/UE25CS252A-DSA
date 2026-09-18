@@ -3,19 +3,40 @@
 
 int main()
 {
-	clist_t mylist;
-	init_clist(&mylist);
-	
-	int a[] = {10, 20, 30, 40, 50};
-	int n = 5;
-	
-	for(int i = 0; i < n; ++i)
-	{
-		add(&mylist, a[i]);
-		disp(&mylist);
-	}
+    clist_t list;
+    int n, k;
+    int i;
 
-	int k = 2;
-	josephus(&mylist,k);
-	disp(&mylist);
+    init(&list);
+
+    printf("Enter number of people: ");
+    scanf("%d", &n);
+
+    printf("Enter the count k to be removed: ");
+    scanf("%d", &k);
+
+    for (i = 1; i <= n; i++)
+    {
+        char name_temp[50];
+        printf("Enter name: ");
+        scanf("%s", name_temp);
+        add(&list, i, name_temp);
+    }
+
+    printf("\nInitial list:\n");
+    disp(&list);
+
+    printf("\nElimination order:\n");
+
+    for (i=1; i<n; i++)
+    {
+        find_kth(&list, k);
+    }
+
+    printf("\nSurvivor:\n");
+    disp(&list);
+
+    deinit(&list);
+
+    return 0;
 }

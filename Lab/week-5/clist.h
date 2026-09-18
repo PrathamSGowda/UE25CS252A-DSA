@@ -1,23 +1,28 @@
 #ifndef CLIST_H
-#define CLIST_H 
-struct node 
+#define CLIST_H
+
+struct node
 {
-	int key_;
-	struct node *next_;
+    int key_;
+    char name_[50];
+    struct node *next_;
 };
+
 typedef struct node node_t;
 
-struct clist 
+struct clist
 {
-	node_t* head_;
+    node_t* head_;
 };
+
 typedef struct clist clist_t;
 
-void josephus(clist_t *ptr_clist, int k);
+void init(clist_t *ptr_clist);
+void add(clist_t *ptr_clist, int key, char name_[50]);
+void disp(clist_t *ptr_list);
 
-void init_clist(clist_t *ptr_clist);
-void add(clist_t *ptr_clist, int val);
-void disp(clist_t* ptr_clist);
-void remove_node(clist_t  *ptr_clist, int key);
+void deinit(clist_t *ptr_list);
+int delete_after(clist_t *ptr_clist);
+void find_kth(clist_t* ptr_list, int k);
 
-#endif 
+#endif
