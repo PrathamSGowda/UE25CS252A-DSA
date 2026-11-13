@@ -10,6 +10,24 @@ void init(tree_t *ptr_tree)
 	ptr_tree->root_ = NULL;
 }
 
+
+deinit_recursive(node_t *root)
+{
+	if(root)
+	{
+		deinit_recursive(root->left_);
+		deinit_recursive(root->right_);
+		free(root);
+	}
+}
+
+void denit(tree_t *ptr_tree)
+{
+	deinit_recursive(ptr_tree->root_);
+	ptr_tree->root_ == NULL;
+}
+
+
 node_t* insert_recursive(node_t* root, node_t* temp)
 {
 	if(root == NULL)
@@ -49,6 +67,7 @@ void inorder(tree_t *ptr_tree)
 {
 	inorder_recursive(ptr_tree->root_); printf("\n\n");
 }
+
 void preorder_recursive(node_t* temp)
 {
 		if(temp)
@@ -99,6 +118,7 @@ int count_nodes(tree_t *ptr_tree)
 	return count_nodes_recursive(ptr_tree->root_);
 }
 
+
 int count_leaves_recursive(node_t* root)
 {
 	if(root == NULL)
@@ -120,6 +140,7 @@ int count_leaves(tree_t *ptr_tree)
 {
 	return count_leaves_recursive(ptr_tree->root_);
 }
+
 
 int are_same_recursive(node_t* root1, node_t* root2)
 {
@@ -145,6 +166,7 @@ int are_same(tree_t *ptr_tree1, tree_t *ptr_tree2)
 	return are_same_recursive(ptr_tree1->root_, ptr_tree2->root_);
 }
 
+
 node_t* copy_recursive(node_t* root)
 {
 	if(root == NULL)
@@ -161,10 +183,13 @@ node_t* copy_recursive(node_t* root)
 	}
 		
 }
+
 void copy(tree_t* ptr_src, tree_t* ptr_dst)
 {
 	ptr_dst->root_ = copy_recursive(ptr_src->root_);
 }
+
+
 node_t* inorder_successor(node_t* root)
 {
 	// 1. one step to the right 
@@ -176,6 +201,7 @@ node_t* inorder_successor(node_t* root)
 	}
 	return temp;
 }
+
 node_t* delete_key_recursive(node_t* root, int key)
 {
 	// locate the key
@@ -231,8 +257,33 @@ node_t* delete_key_recursive(node_t* root, int key)
 	}
 }
 
-
 void delete_key(tree_t *ptr_tree, int key)
 {
 	ptr_tree->root_ = delete_key_recursive(ptr_tree->root_, key);
+}
+
+
+node_t *search_recursive(node_t *root, int key)
+{
+	if(root == NULL)
+	{
+		return NULL;
+	}
+	else if(key == root->key_)
+	{
+		return root;
+	}
+	else if(key < root->key_)
+	{
+		return search_recursive(root->left_, key);
+	}
+	else
+	{
+		return search_recursive(root->right_, key);
+	}
+}
+
+node_t *search(tree_t *ptr_tree, int key)
+{
+	return search_recursive(ptr_tree->root_, key);
 }

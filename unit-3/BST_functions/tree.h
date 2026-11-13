@@ -15,6 +15,7 @@ struct tree
 typedef struct tree tree_t;
 
 void init(tree_t *ptr_tree);
+void denit(tree_t *ptr_tree);
 void insert(tree_t *ptr_tree, int key);
 
 void inorder(tree_t *ptr_tree);
@@ -28,5 +29,6 @@ int count_leaves(tree_t *ptr_tree);
 int are_same(tree_t *ptr_tree1, tree_t *ptr_tree2);
 void copy(tree_t* ptr_src, tree_t* ptr_dst);
 
+node_t *search(tree_t *ptr_tree, int key);
 void delete_key(tree_t *ptr_tree, int key);
 #endif
